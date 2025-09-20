@@ -1,4 +1,4 @@
-/* Base styles */
+/* Body and container */
 body {
   font-family: Arial, sans-serif;
   background: #f5f7fa;
@@ -18,8 +18,10 @@ body {
   width: 100%;
   max-width: 600px;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
+/* Heading */
 h2 {
   margin-top: 0;
   font-weight: 700;
@@ -28,7 +30,7 @@ h2 {
   color: #222;
 }
 
-/* Form elements */
+/* Form labels and elements */
 label, select, input {
   display: block;
   margin: 10px 0 6px;
@@ -36,7 +38,6 @@ label, select, input {
   color: #333;
 }
 
-/* Inputs */
 input[type=text], select {
   padding: 10px 12px;
   width: 100%;
@@ -50,16 +51,15 @@ input[type=text], select {
 input[type=text]:focus, select:focus {
   outline: none;
   border-color: #007BFF;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
 }
 
-/* Small inputs inside table */
 .small-input {
   width: 80px;
   display: inline-block;
 }
 
-/* Row container for inputs */
+/* Inputs row */
 .inputs-row {
   display: flex;
   gap: 10px;
@@ -68,29 +68,28 @@ input[type=text]:focus, select:focus {
 }
 
 /* Button styles */
-button {
+button, th button, td button {
   background: #007BFF;
   color: white;
-  padding: 12px 18px;
+  padding: 10px 0;
   border: none;
   cursor: pointer;
   font-size: 1.1rem;
-  border-radius: 6px;
-  transition: background-color 0.3s ease;
-  width: 100%;
+  border-radius: 5px;
+  min-width: 36px;
+  min-height: 36px;
+  transition: background-color 0.3s;
   box-sizing: border-box;
 }
 
-button:hover, button:focus {
+button:active, button:hover, th button:active, th button:hover, td button:active, td button:hover {
   background: #0056b3;
-  outline: none;
 }
 
-/* Result text */
 #result {
   margin-top: 25px;
   font-weight: 700;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   color: #111;
   text-align: center;
 }
@@ -100,61 +99,81 @@ button:hover, button:focus {
   display: none;
 }
 
-/* Table styles */
+/* Frequency/Class table styles */
+#classFreqInputDiv {
+  overflow-x: auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 table {
   width: 100%;
+  min-width: 0;
   border-collapse: collapse;
   margin-bottom: 15px;
+  table-layout: auto;
+  background: #fafbfc;
 }
 
 th, td {
   border: 1px solid #ddd;
   text-align: center;
-  padding: 8px;
+  padding: 8px 4px;
   font-size: 1rem;
   color: #333;
+  word-break: break-word;
 }
 
 th {
   background-color: #f0f0f0;
+  font-weight: bold;
 }
 
-/* Responsive adjustments */
-
-/* Tablets and small desktops */
-@media (min-width: 600px) {
-  .inputs-row {
-    flex-wrap: nowrap;
-  }
-  .small-input {
-    width: 100px;
-  }
-  input[type=text], select {
-    font-size: 1.1rem;
-  }
-  button {
-    font-size: 1.2rem;
-  }
+/* Inputs in table cells */
+.classInterval,
+.frequency {
+  width: 90%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 7px 5px;
+  margin: 0;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: white;
 }
 
-/* Larger desktops */
-@media (min-width: 900px) {
-  body {
-    padding: 40px 0;
-    align-items: center;
-  }
+.classInterval:focus,
+.frequency:focus {
+  border-color: #007BFF;
+  outline: none;
+}
+
+/* Responsive design for smallest screens */
+@media (max-width: 600px) {
   .container {
-    padding: 30px 40px;
+    padding: 10px 5px;
   }
-  h2 {
-    font-size: 2rem;
+  table {
+    min-width: 380px;
+    font-size: 0.95rem;
+    display: block;
+    overflow-x: auto;
   }
-  button {
-    max-width: 250px;
-    margin-left: auto;
-    margin-right: auto;
+  th, td {
+    font-size: 0.95rem;
+    padding: 6px 2px;
   }
-  #result {
-    font-size: 1.6rem;
+}
+
+@media (max-width: 400px) {
+  table {
+    min-width: 320px;
   }
+}
+
+/* Additional accessibility: visible focus for buttons */
+button:focus, th button:focus, td button:focus {
+  outline: 2px solid #007BFF;
+  outline-offset: 2px;
 }
