@@ -1,64 +1,160 @@
+/* Base styles */
 body {
-    font-family: Arial, sans-serif;
-    background: #f5f7fa;
-    padding: 20px;
-  }
-  .container {
-    max-width: 600px;
-    margin: auto;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px #ccc;
-  }
-  label, select, input {
-    display: block;
-    margin: 10px 0 6px;
-    font-weight: bold;
-  }
-  input[type=text], select {
-    padding: 8px;
-    width: 100%;
-    box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  background: #f5f7fa;
+  padding: 20px;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.container {
+  background: white;
+  padding: 20px 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #ccc;
+  width: 100%;
+  max-width: 600px;
+  box-sizing: border-box;
+}
+
+h2 {
+  margin-top: 0;
+  font-weight: 700;
+  font-size: 1.8rem;
+  text-align: center;
+  color: #222;
+}
+
+/* Form elements */
+label, select, input {
+  display: block;
+  margin: 10px 0 6px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Inputs */
+input[type=text], select {
+  padding: 10px 12px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 1rem;
+  border: 1.5px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
+}
+
+input[type=text]:focus, select:focus {
+  outline: none;
+  border-color: #007BFF;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Small inputs inside table */
+.small-input {
+  width: 80px;
+  display: inline-block;
+}
+
+/* Row container for inputs */
+.inputs-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+/* Button styles */
+button {
+  background: #007BFF;
+  color: white;
+  padding: 12px 18px;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+button:hover, button:focus {
+  background: #0056b3;
+  outline: none;
+}
+
+/* Result text */
+#result {
+  margin-top: 25px;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #111;
+  text-align: center;
+}
+
+/* Hide elements */
+.hidden {
+  display: none;
+}
+
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  text-align: center;
+  padding: 8px;
+  font-size: 1rem;
+  color: #333;
+}
+
+th {
+  background-color: #f0f0f0;
+}
+
+/* Responsive adjustments */
+
+/* Tablets and small desktops */
+@media (min-width: 600px) {
+  .inputs-row {
+    flex-wrap: nowrap;
   }
   .small-input {
-    width: 80px;
-    display: inline-block;
+    width: 100px;
   }
-  .inputs-row {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-bottom: 15px;
+  input[type=text], select {
+    font-size: 1.1rem;
   }
   button {
-    background: #007BFF;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    border-radius: 5px;
-    margin-top: 10px;
+    font-size: 1.2rem;
   }
-  button:hover {
-    background: #0056b3;
+}
+
+/* Larger desktops */
+@media (min-width: 900px) {
+  body {
+    padding: 40px 0;
+    align-items: center;
+  }
+  .container {
+    padding: 30px 40px;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  button {
+    max-width: 250px;
+    margin-left: auto;
+    margin-right: auto;
   }
   #result {
-    margin-top: 20px;
-    font-size: 22px;
-    font-weight: bold;
+    font-size: 1.6rem;
   }
-  .hidden {
-    display: none;
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 10px;
-  }
-  th, td {
-    border: 1px solid #ddd;
-    text-align: center;
-    padding: 6px;
-  }
+}
