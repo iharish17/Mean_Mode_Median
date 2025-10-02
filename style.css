@@ -34,6 +34,7 @@ label {
 input[type='text'], input[type='number'], select {
   padding: 9px 10px;
   border: 1.5px solid #d6e6f6;
+  cursor: pointer;
   border-radius: 8px;
   background: #f6faff;
   color: #323447;
