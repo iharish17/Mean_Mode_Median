@@ -6,22 +6,17 @@ const simpleInputDiv = document.getElementById("simpleInputDiv");
 const classFreqInputDiv = document.getElementById("classFreqInputDiv");
 const resultDiv = document.getElementById("result");
 
-// Show/hide inputs based on selection
 function resetInputs() {
   resultDiv.textContent = "";
   const calcType = calcTypeElem.value;
   const dataType = dataTypeElem.value;
-
   medianSeriesDiv.classList.add("hidden");
   simpleInputDiv.classList.add("hidden");
   classFreqInputDiv.classList.add("hidden");
-
   if (!calcType || !dataType) return;
-
   if (calcType === "median") {
     medianSeriesDiv.classList.remove("hidden");
   }
-
   if (dataType === "simple") {
     simpleInputDiv.classList.remove("hidden");
   } else if (dataType === "classFreq") {
@@ -29,7 +24,6 @@ function resetInputs() {
   }
 }
 
-// Add row in class freq table
 function addClassRow() {
   const tbody = document.getElementById("classFreqBody");
   const row = document.createElement("tr");
@@ -46,7 +40,6 @@ function removeClassRow(btn) {
   row.remove();
 }
 
-// Parse simple input string to array of numbers
 function parseSimpleData() {
   const input = document.getElementById("simpleData").value;
   if (!input.trim()) return null;
@@ -55,7 +48,6 @@ function parseSimpleData() {
   return nums;
 }
 
-// Parse class intervals and frequencies
 function parseClassFreq() {
   const intervalsElems = document.querySelectorAll(".classInterval");
   const freqElems = document.querySelectorAll(".frequency");
@@ -65,10 +57,9 @@ function parseClassFreq() {
     const cls = intervalsElems[i].value.trim();
     const freq = parseFloat(freqElems[i].value);
     if (!cls || isNaN(freq) || freq < 0) {
-      return null; // invalid data
+      return null;
     }
     frequencies.push(freq);
-    // Parse class interval
     const parts = cls.split("-");
     if (parts.length !== 2) return null;
     const lower = parseFloat(parts[0].trim());
@@ -79,13 +70,10 @@ function parseClassFreq() {
   return { classes, frequencies };
 }
 
-// Calculate mean of simple data
 function meanSimple(nums) {
   const sum = nums.reduce((a,b) => a+b, 0);
   return sum / nums.length;
 }
-
-// Calculate median of simple data (sorted)
 function medianSimple(nums) {
   nums.sort((a,b) => a-b);
   const mid = Math.floor(nums.length/2);
@@ -95,8 +83,6 @@ function medianSimple(nums) {
     return nums[mid];
   }
 }
-
-// Calculate mode of simple data
 function modeSimple(nums) {
   const freq = {};
   nums.forEach(n => freq[n] = (freq[n] || 0) + 1);
@@ -113,8 +99,6 @@ function modeSimple(nums) {
   if (modes.length === Object.keys(freq).length) return "No mode";
   return modes.join(", ");
 }
-
-// Calculate mean for class-frequency data
 function meanClassFreq(classes, frequencies) {
   let sumFiXi = 0;
   let sumF = 0;
@@ -125,8 +109,6 @@ function meanClassFreq(classes, frequencies) {
   }
   return sumFiXi / sumF;
 }
-
-// Calculate median for class frequency data, discrete odd, discrete even, or continuous
 function medianClassFreq(classes, frequencies, seriesType) {
   let n = frequencies.reduce((a,b) => a + b, 0);
   let cumFreq = [];
@@ -135,11 +117,7 @@ function medianClassFreq(classes, frequencies, seriesType) {
     sum += f;
     cumFreq.push(sum);
   }
-
   if (seriesType === "discreteOdd" || seriesType === "discreteEven") {
-    // Median is middle value, depending on odd or even n
-    // For odd: middle is (n+1)/2
-    // For even: middle is average of n/2 and n/2+1th values
     if (seriesType === "discreteOdd") {
       let medianPos = (n+1) / 2;
       for (let i=0; i<cumFreq.length; i++) {
@@ -163,57 +141,39 @@ function medianClassFreq(classes, frequencies, seriesType) {
       return (median1 + median2) / 2;
     }
   } else if (seriesType === "continuous") {
-    // For continuous series, use formula:
-    // Median = L + [(n/2 - F)/f] * h
-    // L = lower boundary of median class
-    // F = cumulative freq before median class
-    // f = freq of median class
-    // h = class width (assumed equal width for all classes)
     let halfN = n/2;
     let medianClassIndex = cumFreq.findIndex(cf => cf >= halfN);
     let L = classes[medianClassIndex].lower;
     let F = medianClassIndex === 0 ? 0 : cumFreq[medianClassIndex - 1];
     let f = frequencies[medianClassIndex];
     let h = classes[medianClassIndex].upper - classes[medianClassIndex].lower;
-
     let median = L + ((halfN - F) / f) * h;
     return median;
   }
-  return null; // If none matched
+  return null;
 }
-
-// Calculate mode for class frequency data
 function modeClassFreq(classes, frequencies) {
-  // Mode class = class with max freq 
   let maxFreq = Math.max(...frequencies);
   let modeIndices = [];
   frequencies.forEach((f,i) => { if (f === maxFreq) modeIndices.push(i); });
-
   if (modeIndices.length !== 1) {
     return "No unique mode";
   }
-
   let i = modeIndices[0];
-  // For grouped data, mode = L + [(f1 - f0) / (2f1 - f0 - f2)] * h
-  // where f1 = freq of modal class, f0 = freq before modal class, f2 = freq after modal class, h = class width
   let f1 = frequencies[i];
   let f0 = i === 0 ? 0 : frequencies[i-1];
   let f2 = i === frequencies.length - 1 ? 0 : frequencies[i+1];
   let L = classes[i].lower;
   let h = classes[i].upper - classes[i].lower;
-
   let denominator = (2*f1 - f0 - f2);
   if (denominator === 0) return "Cannot calculate mode";
-
   let mode = L + ((f1 - f0)/denominator) * h;
   return mode;
 }
-
 function calculate() {
   const calcType = calcTypeElem.value;
   const dataType = dataTypeElem.value;
   resultDiv.textContent = "";
-
   if (!calcType) {
     alert("Select calculation type");
     return;
@@ -222,7 +182,6 @@ function calculate() {
     alert("Select data type");
     return;
   }
-
   if (dataType === "simple") {
     let nums = parseSimpleData();
     if (!nums) {
@@ -246,7 +205,6 @@ function calculate() {
       return;
     }
     let { classes, frequencies } = parsed;
-
     if (calcType === "mean") {
       const mean = meanClassFreq(classes, frequencies);
       resultDiv.textContent = `Mean: ${mean.toFixed(2)}`;
@@ -268,6 +226,5 @@ function calculate() {
     }
   }
 }
-
 calcTypeElem.addEventListener("change", resetInputs);
 dataTypeElem.addEventListener("change", resetInputs);
