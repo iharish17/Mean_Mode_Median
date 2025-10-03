@@ -1,17 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="icon" type="image/png" href="favicon.png" />
-<title>M M M Calculator</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
+<div class="welcome-banner">
+  <div class="welcome-title">Welcome Maths Lovers!</div>
+  <div class="welcome-description">
+    Explore your passion for mathematics with our carefully curated tools and resources. Click a button below to jump to the tool you want to use.
+  </div>
+  <div class="tool-buttons-row">
+    <button class="tool-button" onclick="location.href='#quadratic'">Quadratic Equation Solver</button>
+    <button class="tool-button" onclick="location.href='#equation'">Equation Solver</button>
+    <button class="tool-button" onclick="location.href='#meanmode'">Mean, Mode Median</button>
+    <button class="tool-button" onclick="location.href='#number'">Number System</button>
+  </div>
+</div>
 
 <div class="container">
   <h2>Mean, Median, Mode Calculator (Simple & Class Data)</h2>
-
   <label for="calcType">Select Calculation:</label>
   <select id="calcType" onchange="resetInputs()">
     <option value="">--Select--</option>
@@ -19,14 +20,12 @@
     <option value="median">Median</option>
     <option value="mode">Mode</option>
   </select>
-
   <label for="dataType">Select Data Type:</label>
   <select id="dataType" onchange="resetInputs()">
     <option value="">--Select--</option>
     <option value="simple">Simple Data</option>
     <option value="classFreq">Class & Frequency Data</option>
   </select>
-
   <div id="medianSeriesDiv" class="hidden">
     <label for="medianSeries">For Median, select series type:</label>
     <select id="medianSeries">
@@ -35,12 +34,10 @@
       <option value="continuous">Continuous Series</option>
     </select>
   </div>
-
   <div id="simpleInputDiv" class="hidden">
     <label for="simpleData">Enter numbers (comma separated):</label>
     <input type="text" id="simpleData" placeholder="e.g. 10, 20, 20, 30" />
   </div>
-
   <div id="classFreqInputDiv" class="hidden">
     <label>Enter class intervals and frequencies:</label>
     <div class="table-responsive">
@@ -62,10 +59,6 @@
       </table>
     </div>
   </div>
-
   <button onclick="calculate()">Calculate</button>
   <div id="result"></div>
 </div>
-</body>
-  <script src="script.js"></script>
-</html>
