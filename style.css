@@ -5,6 +5,63 @@ body {
   margin: 0;
   padding: 0;
 }
+
+/* --- Welcome Banner Styles --- */
+.welcome-banner {
+  width: 100%;
+  text-align: center;
+  margin: 0 auto 40px auto;
+  padding-top: 42px;
+  padding-bottom: 14px;
+}
+.welcome-title {
+  color: #ffd600;
+  font-size: 2.6rem;
+  font-weight: 900;
+  letter-spacing: 0.018em;
+  text-shadow: 0 2px 18px rgba(60,60,60, 0.13);
+  margin-bottom: 13px;
+}
+.welcome-description {
+  color: #e8ecf7;
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+.tool-buttons-row {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-top: 11px;
+}
+.tool-button {
+  background: #ffd600;
+  color: #2c2f36;
+  padding: 19px 33px;
+  font-size: 1.27rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(80,80,150,0.15);
+  cursor: pointer;
+  transition: filter 0.12s, transform 0.13s;
+  margin-bottom: 14px;
+}
+.tool-button:hover {
+  filter: brightness(0.94);
+  transform: translateY(-2px) scale(1.04);
+}
+/* Responsive Welcome Banner */
+@media (max-width: 650px) {
+  .welcome-title { font-size: 1.44rem; }
+  .welcome-description { font-size: 0.97rem; }
+  .tool-buttons-row { gap: 12px; }
+  .tool-button { font-size: 1.02rem; padding: 11px 9vw; }
+  .welcome-banner { padding-top: 18px; }
+}
+
+/* --- Calculator Container and Calculator Styles (existing) --- */
 .container {
   max-width: 650px;
   background: transparent;
@@ -34,7 +91,6 @@ label {
 input[type='text'], input[type='number'], select {
   padding: 9px 10px;
   border: 1.5px solid #d6e6f6;
-  cursor: pointer;
   border-radius: 8px;
   background: #f6faff;
   color: #323447;
@@ -120,7 +176,6 @@ th {
   padding-left: 3px;
   padding-right: 3px;
 }
-
 /* Fix button sizing inside table cells */
 #classFreqTable button {
   width: 90%;
@@ -130,8 +185,7 @@ th {
   margin: 2px auto;
   display: block;
 }
-
-/* Responsive styles: adjust layout for mobile and tablets */
+/* Responsive styles for calculator */
 @media (max-width: 650px) {
   .container {
     margin: 24px 0;
@@ -158,7 +212,6 @@ th {
     font-size: 0.94rem;
     padding: 5px 1px;
   }
-  /* Stack +/- buttons vertically in cell */
   #classFreqTable td:last-child {
     display: flex;
     flex-direction: column;
