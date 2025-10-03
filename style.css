@@ -28,14 +28,15 @@ body {
   font-weight: 500;
   margin-bottom: 24px;
 }
-.tool-buttons-row {
+.link-buttons-row {
   display: flex;
   justify-content: center;
   gap: 28px;
   flex-wrap: wrap;
   margin-top: 11px;
 }
-.tool-button {
+.link-button {
+  text-decoration: none;
   background: #ffd600;
   color: #2c2f36;
   padding: 19px 33px;
