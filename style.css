@@ -50,6 +50,7 @@ body {
   margin-bottom: 14px;
 }
 .link-button:hover {
+  color: #0077ff;
   filter: brightness(0.94);
   transform: translateY(-2px) scale(1.04);
 }
