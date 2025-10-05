@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome Maths Lovers!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-image: linear-gradient(135deg, #7f7fd5 0%, #91eae4 100%);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0;
+    }
+    .welcome-banner {
+      width: 100%;
+      text-align: center;
+      margin: 0 auto 40px auto;
+      padding-top: 42px;
+      padding-bottom: 14px;
+    }
+    .welcome-title {
+      color: #ffd700;
+      font-size: 2.6rem;
+      font-weight: 900;
+      letter-spacing: 0.018em;
+      text-shadow: 0 2px 18px rgba(60,60,60, 0.13);
+      margin-bottom: 13px;
+    }
+    .welcome-description {
+      color: #e8ecf7;
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin-bottom: 24px;
+    }
+.link-buttons-row {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-top: 11px;
+}
+.link-button {
+  text-decoration: none;
+  background: #ffd600;
+  color: #2c2f36;
+  padding: 19px 33px;
+  font-size: 1.27rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(80,80,150,0.15);
+  cursor: pointer;
+  transition: filter 0.12s, transform 0.13s;
+  margin-bottom: 14px;
+}
+.link-button:hover {
+  filter: brightness(0.94);
+  transform: translateY(-2px) scale(1.04);
+}
+    @media (max-width: 1100px) {
+      .welcome-title { font-size: 2.2rem; }
+      .welcome-description { font-size: 1.1rem;}
+      .link-buttons-row { gap: 19px;}
+      .link-button { font-size: 1.15rem; padding: 17px 24px; }
+    }
+    @media (max-width: 650px) {
+      .welcome-banner { margin-bottom: 12px; padding-top: 28px;}
+      .welcome-title { font-size: 1.15rem; }
+      .welcome-description { font-size: 0.91rem;}
+      .link-buttons-row { gap: 10px;}
+      .link-button { font-size: 1rem; padding: 11px 8vw;}
+    }
+ .btn-calc {
+  background: #ffe600;
+  color: #222;
+  border: none;
+  border-radius: 18px; /* Slightly more rounded */
+  font-size: 1.28rem; /* Slightly bigger font */
+  font-weight: 700;
+  padding: 18px 44px;
+  margin: 16px 0;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s, transform 0.2s;
+  width: auto;
+  min-width: 160px; /* For consistent size */
+  display: inline-block;
+}
+
+.btn-calc:hover {
+  background: #fff23f;
+  color: #0077ff;
+  transform: scale(1.05);
+}
+
+.calculator-container {
+  background: transparent; /* Semi-transparent white */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  border-radius: 24px; /* Larger rounding */
+  max-width: 760px;
+  width: 90%;
+  text-align: center;
+  padding: 28px 44px 36px;
+  margin-top: 36px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h2 {
+  color: #ffd600;
+  font-size: 2.4rem;
+  font-weight: 800;
+  margin-bottom: 32px;
+  margin-top: 8px;
+  text-shadow: 0 2px 20px rgba(60, 60, 60, 0.12);
+  letter-spacing: 0.028em;
+}
+
+.calculator-container label {
+  padding: 12px 18px;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  text-align: center;
+  width: 90px;
+  margin-right: 12px;
+  color: #0e0f0fff;
+  font-weight: 600;
+}
+
+.calculator-container input[type="number"] {
+  padding: 10px 16px;
+  margin-bottom: 10px;
+  font-size: 1.023rem;
+  border: 1px solid #bac9ed;
+  border-radius: 10px;
+  text-align: center;
+  width: 100px;
+  background: #f4faff;
+  color: #282828;
+  font-weight: 600;
+}
+.calculator-container button {
+  margin-top: 38px;
+  padding: 20px 0;
+  width: 100%;
+  max-width: 460px;
+  background: #ffd600;
+  border: none;
+  border-radius: 16px;
+  color: #0e0f0fff;
+  font-weight: 800;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+.result {
+  margin-top: 28px;
+  font-size: 1.023rem;
+  color: #0e0f0fff;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.category {
+  font-weight: 600;
+  margin-top: 10px;
+  font-size: 1.25rem;
+  color: #0e0f0fff;
+}
+
+@media (max-width: 600px) {
+  .calculator-container {
+    padding: 24px 18px 28px;
+    width: 95%;
+  }
+
+  .btn-calc {
+    width: 100%;
+    min-width: unset;
+    margin: 12px 0;
+  }
+
+  .calculator-container label,
+  .calculator-container input[type="number"] {
+    width: 100px;
+    padding: 8px 10px;
+    font-size: 1.0rem;
+  }
+  </style>
+</head>
+<body>
+  <div class="welcome-banner">
+    <div class="welcome-title">Welcome Maths Lovers!</div>
+    <div class="welcome-description">
+      Explore your passion for mathematics with our carefully curated tools and resources. Click a button below to jump to the tool you want to use.
+    </div>
+    <div class="link-buttons-row">
+      <a href="https://solve-equation.vercel.app/" class="link-button" target="_self" rel="noopener noreferrer">Quadratic Equation Solver</a>
+      <a href="https://solve-equation.vercel.app/" class="link-button" target="_self" rel="noopener noreferrer">Equation Solver</a>
+      <a href="https://mean-mode-median.vercel.app" class="link-button" target="_self" rel="noopener noreferrer">Mean, Mode and Median</a>
+      <a href="https://number-system-ten.vercel.app" class="link-button" target="_self" rel="noopener noreferrer">Number System</a>
+      <a href="#" class="link-button" target="_self" rel="noopener noreferrer">BMI Calculator</a>
+    </div>
+  </div> 
+  
+  <div class="calculator-container" id="bmi-container">
+    <h2>BMI Calculator</h2>
+    <label for="weight">Weight (kg):</label>
+    <input id="weight" type="number" min="20" max="300" placeholder="e.g., 68"><br>
+    <label for="height">Height (cm):</label>
+    <input id="height" type="number" min="120" max="250" placeholder="e.g., 170"><br>
+    <button onclick="calculateBMI()">Calculate BMI</button>
+    <div class="result" id="result"></div>
+    <div class="category" id="category"></div>
+  </div>
+  <script>
+    function calculateBMI() {
+      var weight = parseFloat(document.getElementById('weight').value);
+      var height = parseFloat(document.getElementById('height').value) / 100;
+      if (weight && height) {
+        var bmi = (weight / (height * height)).toFixed(2);
+        document.getElementById('result').textContent = "Your BMI: " + bmi;
+        let cat = '';
+        if (bmi < 18.5) cat = 'Underweight';
+        else if (bmi < 24.9) cat = 'Normal weight';
+        else if (bmi < 29.9) cat = 'Overweight';
+        else cat = 'Obese';
+        document.getElementById('category').textContent = "Category: " + cat;
+      } else {
+        document.getElementById('result').textContent = "Please enter valid weight and height.";
+        document.getElementById('category').textContent = '';
+      }
+    }
+  </script>
+</body>
+</html>
