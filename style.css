@@ -101,7 +101,7 @@ input[type='text'], input[type='number'], select {
   background: #f6faff;
   color: #323447;
   margin-bottom: 7px;
-  max-width: auto;
+  max-width: 100%;
   font-size: 1rem;
   transition: border 0.22s;
   font-family: inherit;
