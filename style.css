@@ -61,7 +61,7 @@ body {
       .link-button { font-size: 1.15rem; padding: 17px 24px; }
     }
     @media (max-width: 650px) {
-      .welcome-section { margin-bottom: 12px; padding-top: 28px;}
+      .welcome-banner { margin-bottom: 12px; padding-top: 28px;}
       .welcome-title { font-size: 1.15rem; }
       .welcome-description { font-size: 0.91rem;}
       .link-buttons-row { gap: 10px;}
