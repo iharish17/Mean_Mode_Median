@@ -121,6 +121,8 @@ input:focus, select:focus {
   margin-bottom: 18px;
 }
 button, .container button, .container th button, .container td button {
+  align-itmes: center;
+  justify-content: center;
   background: #ffd600;
   color: #2c2f36;
   padding: 11px 18px;
