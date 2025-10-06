@@ -54,16 +54,20 @@ body {
   filter: brightness(0.94);
   transform: translateY(-2px) scale(1.04);
 }
-/* Responsive Welcome Banner */
-@media (max-width: 650px) {
-  .welcome-title { font-size: 1.44rem; }
-  .welcome-description { font-size: 0.97rem; }
-  .tool-buttons-row { gap: 12px; }
-  .tool-button { font-size: 1.02rem; padding: 11px 9vw; }
-  .welcome-banner { padding-top: 18px; }
-}
+@media (max-width: 1100px) {
+      .welcome-title { font-size: 2.2rem; }
+      .welcome-description { font-size: 1.1rem;}
+      .link-buttons-row { gap: 19px;}
+      .link-button { font-size: 1.15rem; padding: 17px 24px; }
+    }
+    @media (max-width: 650px) {
+      .welcome-section { margin-bottom: 12px; padding-top: 28px;}
+      .welcome-title { font-size: 1.15rem; }
+      .welcome-description { font-size: 0.91rem;}
+      .link-buttons-row { gap: 10px;}
+      .link-button { font-size: 1rem; padding: 11px 8vw;}
+    }
 
-/* --- Calculator Container and Calculator Styles (existing) --- */
 .container {
   max-width: 650px;
   background: transparent;
