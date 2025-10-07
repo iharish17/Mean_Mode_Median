@@ -228,8 +228,3 @@ function calculate() {
 }
 calcTypeElem.addEventListener("change", resetInputs);
 dataTypeElem.addEventListener("change", resetInputs);
-
-    document.getElementById('feedbackBtn').onclick = function () {
-      var form = document.getElementById('feedbackForm');
-      form.style.display = (form.style.display === 'none' || !form.style.display) ? 'block' : 'none';
-    };
